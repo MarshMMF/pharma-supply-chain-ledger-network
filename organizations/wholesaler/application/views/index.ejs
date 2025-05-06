@@ -1,0 +1,271 @@
+<!--O'Reilly - Accelerated Hands-on Smart Contract Development with Hyperledger Fabric V2
+ # farma ledger supply chain network
+ # load application page - Wholesaler
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pharma Ledger Network - Wholesaler Portal</title>
+    <!--Import Fonts and Icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link type="text/css" href="/css/style.css" rel="stylesheet">
+    <script src="/js/plnClient.js"></script>
+  </head>
+<body>
+  <!-- Toast container for notifications -->
+  <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+  
+  <!-- Top Navigation Bar -->
+  <nav class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <i class="material-icons mr-2">business</i>
+        <strong>Wholesaler Portal (Org2)</strong>
+      </a>
+    </div>
+  </nav>
+  
+  <!-- Sidebar Navigation -->
+  <div id="sidebar-wrapper" class="sidebar-toggle">
+    <ul class="sidebar-nav">
+      <li id="addToWalletLink" class="nav-menu">
+        <a id="menu1" href="#addToWallet">
+          <i class="material-icons menuIcon">account_circle</i>Add To Wallet
+        </a>
+      </li>
+      <li id="wholesalerDistributeLink" class="nav-menu">
+        <a id="menu2" href="#wholesalerDistribute">
+          <i class="material-icons menuIcon">local_shipping</i>Distribute Equipment
+        </a>
+      </li>
+      <li id="queryLink" class="nav-menu">
+        <a id="menu3" href="#query">
+          <i class="material-icons menuIcon">search</i>Query
+        </a>
+      </li>
+      <li id="queryHistoryLink" class="nav-menu">
+         <a id="menu4" href="#queryHistory">
+          <i class="material-icons menuIcon">history</i>Query History
+         </a>
+      </li>
+    </ul>
+  </div>
+
+<!-- Main Content -->
+<div class="tab-content page-content">
+    <!-- Add To Wallet Tab -->
+    <div class="tab-pane active text-style" id="addToWalletTab">
+      <div class="alert alert-primary shadow-sm">
+         <div class="d-flex align-items-center">
+           <i class="material-icons mr-3">account_circle</i>
+           <h4 class="mb-0">Add User To Wallet</h4>
+         </div>
+      </div>
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="user">User Identity</label>
+              <input type="text" class="form-control" id="user" placeholder="Enter User">
+            </div>
+            <button id="addUser" type="submit" class="btn btn-success">
+              <i class="material-icons mr-1" style="font-size: 16px; vertical-align: text-bottom;">person_add</i>
+              Add User
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Wholesaler Distribute Tab -->
+    <div class="tab-pane text-style" id="wholesalerDistributeTab">
+      <div class="alert alert-primary shadow-sm">
+        <div class="d-flex align-items-center">
+          <i class="material-icons mr-3">local_shipping</i>
+          <h4 class="mb-0">Distribute Equipment</h4>
+        </div>
+      </div>
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form>
+            <div class="form-group row">
+              <label for="equipmentNumber" class="col-sm-2 col-form-label">Equipment Number</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="equipmentNumber" value="2000.002">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="ownerName" class="col-sm-2 col-form-label">Owner Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="ownerName" value="GlobalWholesalerInc">
+              </div>
+            </div>
+            <button type="submit" id="wholesalerDistribute" class="btn btn-success">
+              <i class="material-icons mr-1" style="font-size: 16px; vertical-align: text-bottom;">send</i>
+              Distribute
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Query Tab -->
+    <div class="tab-pane text-style" id="queryTab">
+      <div class="alert alert-primary shadow-sm">
+        <div class="d-flex align-items-center">
+          <i class="material-icons mr-3">search</i>
+          <h4 class="mb-0">Query Supply Chain Data</h4>
+        </div>
+      </div>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="queryKey">Query Key</label>
+              <input type="text" class="form-control" id="queryKey" placeholder="Enter Key">
+            </div>
+            <button id="query" type="submit" class="btn btn-success">
+              <i class="material-icons mr-1" style="font-size: 16px; vertical-align: text-bottom;">search</i>
+              Query
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div id="queryResult">
+        <div class="card shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Query Result</h5>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th scope="row">Query Key</th>
+                  <td><span id="queryKeyRequest"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Manufacturer</th>
+                  <td><span id="manufacturerOutPut"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Equipment Number</th>
+                  <td><span id="equipmentNumberOutPut"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Equipment Name</th>
+                  <td><span id="equipmentNameOutPut"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Owner</th>
+                  <td><span id="ownerNameOutPut"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Previous Owner Type</th>
+                  <td><span id="previousOwnerType"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Current Owner Type</th>
+                  <td><span id="currentOwnerType"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Equipment Created Date</th>
+                  <td><span id="createDateTime"></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Last Updated Date</th>
+                  <td><span id="lastUpdated"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div id="queryResultEmpty" class="text-center p-5 mt-3 bg-white shadow-sm rounded">
+        <i class="material-icons" style="font-size: 48px; color: #bdbdbd;">info</i>
+        <h3 class="mt-3">No record found</h3>
+      </div>
+    </div>
+    
+    <!-- Query History Tab -->
+    <div class="tab-pane text-style" id="queryHistoryTab">
+      <div class="alert alert-primary shadow-sm">
+        <div class="d-flex align-items-center">
+          <i class="material-icons mr-3">history</i>
+          <h4 class="mb-0">Query Supply Chain History Data</h4>
+        </div>
+      </div>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="queryHistoryKey">Query History Key</label>
+              <input type="text" class="form-control" id="queryHistoryKey" placeholder="Enter Key">
+            </div>
+            <button id="queryHistory" type="submit" class="btn btn-success">
+              <i class="material-icons mr-1" style="font-size: 16px; vertical-align: text-bottom;">history</i>
+              Query History
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div id="queryHistoryResult">
+        <div class="card shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Query History Result</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="historyTable" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Query Key</th>
+                    <th scope="col">Manufacturer</th>
+                    <th scope="col">Equipment Number</th>
+                    <th scope="col">Equipment Name</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Previous Owner Type</th>
+                    <th scope="col">Current Owner Type</th>
+                    <th scope="col">Equipment Created Date</th>
+                    <th scope="col">Last Updated Date</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTableTboday">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="queryHistoryResultEmpty" class="text-center p-5 mt-3 bg-white shadow-sm rounded">
+        <i class="material-icons" style="font-size: 48px; color: #bdbdbd;">info</i>
+        <h3 class="mt-3">No record found</h3>
+      </div>
+    </div>
+</div>
+
+<!-- Loading Indicator -->
+<div id="wait" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:9999;">
+  <div class="card p-4 text-center shadow">
+    <div class="spinner-border text-primary mb-3" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div>Processing request...</div>
+  </div>
+</div>
+</body>
+</html>

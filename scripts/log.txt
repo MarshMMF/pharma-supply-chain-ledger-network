@@ -1,0 +1,1 @@
+[31m2025-05-04 04:01:39.373 EEST [main] InitCmd -> ERRO 001[0m Fatal error when initializing core config : FABRIC_CFG_PATH /home/marsh/MyFolder/HF-Dev-Project/pharma-ledger-network/scripts/../config/ does not exist

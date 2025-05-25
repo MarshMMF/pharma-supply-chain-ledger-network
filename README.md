@@ -27,35 +27,15 @@ Pharma Ledger Network is a decentralized application that enables tracking of ph
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/pharma-ledger-network.git
+git clone https://github.com/MarshMMF/pharma-supply-chain-ledger-network.git
 cd pharma-ledger-network
 ```
 
-### Step 2: Set up Hyperledger Fabric
-
-Make sure you have Hyperledger Fabric prerequisites installed:
-
-```bash
-# Install prerequisites
-sudo apt update
-sudo apt install -y git curl docker.io docker-compose
-
-# Add current user to docker group
-sudo usermod -aG docker $USER
-newgrp docker
-
-# Test Docker
-docker --version
-docker-compose --version
-```
-
-### Step 3: Download Fabric Binaries and Start the Network
+### Step 2: Download Fabric Binaries and Start the Network
 
 ```bash
 # Download Fabric binaries and Docker images
 curl -sSL https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh | bash -s -- 2.1.0 1.4.7 0.4.20
-
-# Copy binaries and config to the current directory
 cp -R fabric-samples/bin .
 cp -R fabric-samples/config .
 
@@ -70,14 +50,14 @@ cp -R fabric-samples/config .
 ```
 
 These steps will:
-- Download Fabric binaries and Docker images (version 2.1.0)
+- Download Fabric binaries
 - Set up the necessary configuration files
 - Start all the necessary containers
 - Create the channel
 - Deploy the chaincode for all organizations
 - Set up the network for use
 
-### Step 4: Install Application Dependencies
+### Step 3: Install Application Dependencies
 
 ```bash
 # Install dependencies for all organizations
@@ -91,7 +71,7 @@ cd ../../pharmacy/application
 npm i
 ```
 
-### Step 5: Start the Applications
+### Step 4: Start the Applications
 
 Open three separate terminal windows:
 

@@ -84,13 +84,13 @@ These steps will:
 ```bash
 # Install dependencies for all organizations
 cd organizations/manufacturer/application
-node app.js
+npm i
 
 cd ../../wholesaler/application
-node app.js
+npm i
 
 cd ../../pharmacy/application
-node app.js
+npm i
 ```
 
 ### Step 5: Start the Applications
@@ -100,17 +100,17 @@ Open three separate terminal windows:
 Terminal 1 (Manufacturer):
 ```bash
 cd organizations/manufacturer/application
-npm start
+node app.js
 ```
 
 Terminal 2 (Wholesaler):
 ```bash
 cd organizations/wholesaler/application
-npm start
+node app.js
 ```
 
 Terminal 3 (Pharmacy):
 ```bash
 cd organizations/pharmacy/application
-npm start
+node app.js
 ```

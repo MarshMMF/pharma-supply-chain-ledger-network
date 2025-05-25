@@ -84,13 +84,13 @@ These steps will:
 ```bash
 # Install dependencies for all organizations
 cd organizations/manufacturer/application
-npm install
+node app.js
 
 cd ../../wholesaler/application
-npm install
+node app.js
 
 cd ../../pharmacy/application
-npm install
+node app.js
 ```
 
 ### Step 5: Start the Applications

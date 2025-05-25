@@ -11,17 +11,15 @@ Pharma Ledger Network is a decentralized application that enables tracking of ph
 - Multi-organization network with separate roles (Manufacturer, Wholesaler, Pharmacy)
 - Equipment creation and tracking through the supply chain
 - Ownership transfer with immutable history
-- Modern, responsive UI for each organization
 - Secure identity management through wallets
 - Queryable transaction history
 
 ## System Requirements
 
-- Ubuntu 18.04 or higher / macOS 10.15+ / Windows 10 with WSL2
+- Linux
 - Docker and Docker Compose
-- Node.js v12.x or v14.x
-- npm 6.x or higher
-- Go 1.14.x or higher
+- Node.js
+- Go
 - Hyperledger Fabric 2.x
 
 ## Installation
